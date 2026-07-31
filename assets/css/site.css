@@ -784,9 +784,6 @@ h3 {
   .split-rail {
     position: static;
   }
-  .split-48 .portrait {
-    max-width: 16rem;
-  }
 }
 
 /* Portrait tiles (attorney previews and profiles) */
@@ -800,26 +797,29 @@ h3 {
   color: var(--ink);
   display: block;
 }
+/* The headshots we have are small (about 200 x 250). The frame matches their
+   4:5 ratio so nothing is cropped, and max-width keeps the browser from
+   upscaling them far past their native size. Replace the source files with
+   larger ones and the cap can go. */
 .portrait {
-  aspect-ratio: 3 / 3.6;
+  aspect-ratio: 4 / 5;
+  max-width: 16rem;
   background: linear-gradient(165deg, var(--green-800), var(--green-950) 80%);
   color: var(--panel-ink);
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  /* A single hairline, not the engraved .frame: the inset second rule
+     reads as a scratch when it crosses a face. */
+  border: 1px solid var(--line);
 }
 .portrait img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-.portrait-initials {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-weight: 600;
-  font-size: clamp(2.6rem, 5vw, 3.6rem);
-  color: var(--brass-bright);
+  /* Both headshots sit high in the frame; bias the crop up off the shoulders */
+  object-position: 50% 30%;
 }
 .portrait-name {
   margin-top: 1rem;
@@ -842,9 +842,6 @@ h3 {
   }
   .portrait-name {
     font-size: 1.2rem;
-  }
-  .portrait-initials {
-    font-size: 2.2rem;
   }
 }
 
