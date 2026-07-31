@@ -33,11 +33,15 @@ the home page for local SEO.
 
 ## TODO before launch
 
-1. **Photography.** The site ships with styled placeholders; drop real photos into
-   `assets/img/` and swap them in at the commented image slots:
-   - `index.html` hero panel: the two attorneys together, the office exterior, or the
-     Limestone County Courthouse (portrait, ~1200×1400)
-   - `index.html` + `attorneys.html`: attorney headshots `byrd-latham.jpg`, `jim-moffatt.jpg` (portrait, ~900×1080)
+1. **Photography.**
+   - **Headshots are in place** on `index.html` and `attorneys.html`
+     (`assets/img/latham.webp`, `assets/img/moffatt.webp`), but the source files are
+     only ~200×250. `.portrait` is capped at `max-width: 16rem` so the browser never
+     upscales them much past native size. Replace them with 4:5 files at roughly
+     800×1000 and that cap can be raised or dropped.
+   - `index.html` hero panel still uses the monogram placeholder; a photo of the two
+     attorneys together, the office exterior, or the Limestone County Courthouse
+     goes in the commented image slot (portrait, ~1200×1400).
    - Optional practice-area photos for `practice-areas.html` (criminal, family, probate).
      There are no image slots there yet; add them to `.area-head` if the firm supplies art.
 2. **Open Graph image.** `assets/img/og.png` (1200×630) is referenced from every
