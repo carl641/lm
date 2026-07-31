@@ -31,6 +31,30 @@ root to any static host (GitHub Pages, Netlify, Cloudflare Pages, cPanel).
 `robots.txt` and `sitemap.xml` are included; JSON-LD `LegalService` data is on
 the home page for local SEO.
 
+## Home page is a standalone demo
+
+`index.html` is currently wired as a self-contained demo. Every link that used to
+point at another page — header nav, footer nav, the practice-area tiles, the
+attorney cards, and the inline "Contact us today" links — is a placeholder
+`href="#"`, so the home page can be reviewed and iterated on while the other
+pages are still being worked on. The other pages are untouched and still link to
+each other normally.
+
+Still live on the home page: the `#main` skip link and every `tel:+12562322510`
+call button.
+
+To reconnect it, restore these targets in `index.html`:
+
+| Location | Target |
+|---|---|
+| Brand seal (header), footer "Home" | `index.html` |
+| Nav + footer: About / Attorneys / Practice Areas / FAQ / Contact | matching `*.html` |
+| Hero "Practice areas" link, footer "Practice Areas" | `practice-areas.html` |
+| Practice tiles | `practice-areas.html#family-law`, `#criminal-defense`, `#estate-planning`, `#probate`, `#personal-injury`, `#mediation` |
+| "Meet the attorneys" link | `attorneys.html` |
+| Portrait cards | `attorneys.html#byrd-latham`, `attorneys.html#jim-moffatt` |
+| "Contact us today" (rail link and inline prose link) | `contact.html` |
+
 ## TODO before launch
 
 1. **Photography.**
