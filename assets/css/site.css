@@ -649,20 +649,25 @@ h3 {
   color: var(--ink-soft);
   max-width: 36em;
 }
-.tile-arrow {
-  position: absolute;
-  top: 1.6rem;
-  right: 1.6rem;
-  width: 1.05rem;
-  height: 1.05rem;
-  color: var(--ink-soft);
-  opacity: 0;
-  transform: translateX(-6px);
-  transition: opacity 0.2s ease, transform 0.2s ease;
+.tile-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: auto;
+  padding-top: 0.6rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent-text);
 }
-.tile:hover .tile-arrow {
-  opacity: 1;
-  transform: none;
+.tile-more svg {
+  width: 0.95rem;
+  height: 0.95rem;
+  transition: transform 0.18s ease;
+}
+.tile:hover .tile-more svg {
+  transform: translateX(4px);
 }
 .tile-featured {
   grid-column: span 7;
@@ -681,13 +686,20 @@ h3 {
 .tile-featured:hover {
   border-color: var(--green-700);
 }
-.tile-featured .tile-arrow {
-  color: var(--panel-ink);
+.tile-featured .tile-more {
+  color: var(--brass-bright);
 }
 .tile-tall {
   grid-column: span 5;
   min-height: 17rem;
   justify-content: flex-end;
+}
+/* Bottom-packed tiles set their own rhythm; only plain tiles need the push */
+.tile-featured .tile-more,
+.tile-tall .tile-more,
+.tile-wide .tile-more {
+  margin-top: 0.35rem;
+  padding-top: 0;
 }
 .tile-wide {
   grid-column: span 12;
@@ -833,6 +845,41 @@ h3 {
   }
   .portrait-initials {
     font-size: 2.2rem;
+  }
+}
+
+/* ---------- Check grid (why choose us) ---------- */
+.check-grid {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: clamp(1.5rem, 4vw, 3.5rem);
+}
+.check-grid li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  padding-block: 1.15rem;
+  border-top: 1px solid var(--line);
+  font-size: 0.98rem;
+  line-height: 1.5;
+}
+.check-grid .icon {
+  width: 1.05rem;
+  height: 1.05rem;
+  flex: none;
+  margin-top: 0.28rem;
+  color: var(--accent-text);
+}
+@media (max-width: 880px) {
+  .check-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 560px) {
+  .check-grid {
+    grid-template-columns: 1fr;
   }
 }
 
