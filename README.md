@@ -15,6 +15,10 @@ root to any static host (GitHub Pages, Netlify, Cloudflare Pages, cPanel).
 - **Design**: law-library palette — deep green, warm paper, single brass accent.
   Light and dark themes via `prefers-color-scheme`. WCAG AA contrast verified
   for all text pairs. `prefers-reduced-motion` honored.
+- **Photography**: full-bleed photo sections (`.photo-section`) lay a picture under
+  a `--green-950` scrim. The stock art is warm red, so the image is desaturated and
+  washed in brand green to keep the palette intact; scrim stops are set per section
+  so the copy stays above AA against the brightest pixel it has to cover.
 
 ## Pages
 
@@ -63,9 +67,13 @@ To reconnect it, restore these targets in `index.html`:
      only ~200×250. `.portrait` is capped at `max-width: 16rem` so the browser never
      upscales them much past native size. Replace them with 4:5 files at roughly
      800×1000 and that cap can be raised or dropped.
-   - `index.html` hero panel still uses the monogram placeholder; a photo of the two
-     attorneys together, the office exterior, or the Limestone County Courthouse
-     goes in the commented image slot (portrait, ~1200×1400).
+   - **The home page hero and firm intro now run on licensed stock** (Depositphotos):
+     a Lady Justice statue behind the hero, a gavel and scales in a law library behind
+     "The firm". Both are served as WebP derivatives (`hero-justice-*.webp`,
+     `firm-library-*.webp`, 1100w and 1800w) generated from the full-size JPGs kept
+     alongside them in `assets/img/`; regenerate the derivatives if the sources change.
+     Swapping in real firm photography — the two attorneys, the office exterior, or the
+     Limestone County Courthouse — would still be an upgrade over stock.
    - Optional practice-area photos for `practice-areas.html` (criminal, family, probate).
      There are no image slots there yet; add them to `.area-head` if the firm supplies art.
 2. **Open Graph image.** `assets/img/og.png` (1200×630) is referenced from every
