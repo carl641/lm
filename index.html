@@ -16,6 +16,7 @@
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="assets/fonts/cormorant-garamond-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/public-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" as="image" href="assets/img/hero-justice-1800.webp" imagesrcset="assets/img/hero-justice-1100.webp 1100w, assets/img/hero-justice-1800.webp 1800w" imagesizes="100vw" fetchpriority="high">
   <link rel="stylesheet" href="assets/css/site.css">
   <script defer src="assets/js/site.js"></script>
   <script type="application/ld+json">
@@ -86,9 +87,15 @@
   <main id="main">
 
     <!-- Hero -->
-    <section class="hero">
-      <div class="container hero-grid">
-        <div>
+    <section class="hero photo-section hero-photo on-panel">
+      <div class="photo-media">
+        <img src="assets/img/hero-justice-1800.webp"
+             srcset="assets/img/hero-justice-1100.webp 1100w, assets/img/hero-justice-1800.webp 1800w"
+             sizes="100vw" alt="" width="1800" height="1080"
+             fetchpriority="high" decoding="async">
+      </div>
+      <div class="container">
+        <div class="hero-copy">
           <h1>Athens lawyers, one block<br class="br-desktop"> from the courthouse.</h1>
           <p class="lede">Latham Moffatt, P.C. represents North Alabama families in family law, criminal defense, estate planning, and personal injury matters.</p>
           <div class="hero-actions">
@@ -101,17 +108,6 @@
               <svg class="icon" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg>
             </a>
           </div>
-        </div>
-        <!-- Image slot: replace the inner seal with a photo of the two attorneys,
-             the firm's building, or the Limestone County Courthouse, e.g.
-             <img src="assets/img/attorneys.jpg" alt="Byrd R. Latham and James D. Moffatt at the firm's Athens office"> -->
-        <div class="hero-panel frame" aria-hidden="true">
-          <svg class="seal" viewBox="0 0 120 120">
-            <circle cx="60" cy="60" r="57" fill="none" stroke="currentColor" stroke-width="1.4"/>
-            <circle cx="60" cy="60" r="49" fill="none" stroke="currentColor" stroke-width="0.7"/>
-            <text x="60" y="54" text-anchor="middle" dominant-baseline="central" font-family="Cormorant Garamond, Georgia, serif" font-size="40" font-weight="600" fill="currentColor" letter-spacing="1.5">LM</text>
-            <text x="60" y="82" text-anchor="middle" font-family="Public Sans, Arial, sans-serif" font-size="6.5" font-weight="600" letter-spacing="2.6" fill="currentColor">ATHENS, ALABAMA</text>
-          </svg>
         </div>
       </div>
     </section>
@@ -192,7 +188,13 @@
     </section>
 
     <!-- Firm introduction -->
-    <section class="section section-alt">
+    <section class="section photo-section firm-photo on-panel">
+      <div class="photo-media">
+        <img src="assets/img/firm-library-1800.webp"
+             srcset="assets/img/firm-library-1100.webp 1100w, assets/img/firm-library-1800.webp 1800w"
+             sizes="100vw" alt="" width="1800" height="1202"
+             loading="lazy" decoding="async">
+      </div>
       <div class="container split">
         <div class="split-rail" data-reveal>
           <span class="eyebrow">The firm</span>

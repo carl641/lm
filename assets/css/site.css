@@ -85,7 +85,9 @@
   --panel-2: var(--green-800);
   --panel-ink: #edebe1;
   --panel-soft: #a8b5ac;
+  --panel-prose: rgba(237, 235, 225, 0.87);
   --panel-line: rgba(237, 235, 225, 0.2);
+  --scrim-rgb: 16, 36, 28;         /* --green-950, for scrim alphas */
   --btn-bg: var(--green-900);
   --btn-ink: #f2f0e9;
   --btn-bg-hover: var(--green-800);
@@ -268,6 +270,114 @@ h3 {
 }
 .section-head .lede {
   margin-top: 1rem;
+}
+
+/* ---------- Photographic sections ---------- */
+/* A full-bleed photo under a green scrim. The stock art is warm red; pulling
+   the saturation out and washing it in --green-950 lands it on the brand
+   palette and buys the contrast the copy on top needs. Every text colour in
+   here is checked against the densest photo pixel the scrim has to cover. */
+.photo-section {
+  position: relative;
+  isolation: isolate;
+  background: var(--green-950);
+  color: var(--panel-ink);
+}
+.photo-section > .container {
+  position: relative;
+  z-index: 1;
+}
+.photo-media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.photo-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.32) brightness(0.82) contrast(1.05);
+}
+.photo-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+.photo-section .lede {
+  color: var(--panel-soft);
+}
+.photo-section .prose {
+  color: var(--panel-prose);
+}
+.photo-section .eyebrow,
+.photo-section .text-link,
+.photo-section .prose a {
+  color: var(--brass-bright);
+}
+/* The light-theme accent is too dark to ring a control on a photo */
+.photo-section :focus-visible {
+  outline-color: var(--brass-bright);
+}
+
+/* Hero: the statue sits right of centre, so the scrim runs diagonally and
+   thins out toward the top right where the scales are. */
+.hero-photo .photo-media img {
+  object-position: 66% 45%;
+}
+.hero-photo .photo-media::after {
+  background:
+    linear-gradient(
+      100deg,
+      rgba(var(--scrim-rgb), 0.96) 0%,
+      rgba(var(--scrim-rgb), 0.92) 40%,
+      rgba(var(--scrim-rgb), 0.74) 62%,
+      rgba(var(--scrim-rgb), 0.46) 82%,
+      rgba(var(--scrim-rgb), 0.34) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(var(--scrim-rgb), 0.42) 0%,
+      rgba(var(--scrim-rgb), 0) 34%,
+      rgba(var(--scrim-rgb), 0) 60%,
+      rgba(var(--scrim-rgb), 0.62) 100%
+    );
+}
+
+/* Firm intro: body copy spans the full width, so the scrim is dense through
+   the middle and only opens up in the section padding, top and bottom. */
+.firm-photo .photo-media img {
+  object-position: 55% 50%;
+  filter: saturate(0.36) brightness(0.98) contrast(1.04);
+}
+.firm-photo .photo-media::after {
+  background: linear-gradient(
+    180deg,
+    rgba(var(--scrim-rgb), 0.6) 0%,
+    rgba(var(--scrim-rgb), 0.9) 15%,
+    rgba(var(--scrim-rgb), 0.9) 76%,
+    rgba(var(--scrim-rgb), 0.46) 100%
+  );
+}
+
+/* Single column: copy sits over the whole frame, so the scrim goes flat */
+@media (max-width: 880px) {
+  .hero-photo .photo-media::after {
+    background: linear-gradient(
+      180deg,
+      rgba(var(--scrim-rgb), 0.88) 0%,
+      rgba(var(--scrim-rgb), 0.85) 45%,
+      rgba(var(--scrim-rgb), 0.93) 100%
+    );
+  }
+  .firm-photo .photo-media::after {
+    background: linear-gradient(
+      180deg,
+      rgba(var(--scrim-rgb), 0.7) 0%,
+      rgba(var(--scrim-rgb), 0.91) 10%,
+      rgba(var(--scrim-rgb), 0.91) 88%,
+      rgba(var(--scrim-rgb), 0.66) 100%
+    );
+  }
 }
 
 /* Engraved certificate frame */
@@ -509,13 +619,12 @@ h3 {
 
 /* ---------- Hero (home) ---------- */
 .hero {
-  padding-block: clamp(3.5rem, 7vw, 6rem);
+  padding-block: clamp(5rem, 10vw, 8.5rem);
 }
-.hero-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 15fr) minmax(0, 9fr);
-  gap: clamp(2rem, 5vw, 4.5rem);
-  align-items: center;
+/* Wide enough to hold "Athens lawyers, one block" on one line at the top of
+   the type clamp, narrow enough to leave the statue its half of the frame. */
+.hero-copy {
+  max-width: 47rem;
 }
 .hero h1 {
   font-size: clamp(2.6rem, 5.1vw, 3.8rem);
@@ -538,31 +647,6 @@ h3 {
   align-items: center;
   gap: 1.4rem;
   margin-top: 2.2rem;
-}
-.hero-panel {
-  background: linear-gradient(160deg, var(--green-800), var(--green-950) 70%);
-  color: var(--panel-ink);
-  aspect-ratio: 4 / 4.6;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: var(--shadow);
-}
-.hero-panel .seal {
-  width: clamp(9rem, 16vw, 13rem);
-  height: auto;
-  color: var(--brass-bright);
-}
-@media (max-width: 880px) {
-  .hero-grid {
-    grid-template-columns: 1fr;
-  }
-  .hero-panel {
-    aspect-ratio: 16 / 9;
-  }
-  .hero-panel .seal {
-    width: 8rem;
-  }
 }
 
 /* ---------- Stat strip ---------- */
@@ -1344,10 +1428,17 @@ h3 {
   .site-footer,
   .band,
   .nav-toggle,
+  .photo-media,
   body::after {
     display: none;
   }
   body {
+    background: #fff;
+    color: #000;
+  }
+  .photo-section,
+  .photo-section .lede,
+  .photo-section .prose {
     background: #fff;
     color: #000;
   }
